@@ -6,6 +6,9 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <queries>
+        <provider android:authorities="com.didi.drouter.remote.demo.remote" />
+    </queries>
 
     <application
         android:name="com.didi.demo.Application"
@@ -17,6 +20,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name="com.didi.demo.MainActivity"
+            android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,7 +33,10 @@
         <activity android:name="com.didi.demo.activity.ActivityTest2" />
         <activity android:name="com.didi.demo.activity.ActivityTest3" />
         <activity android:name="com.didi.demo.web.WebActivity" />
-        <activity android:name="com.didi.demo.activity.ActivityRemoteTest" />
+        <activity android:name="com.didi.demo.activity.ActivityRemoteTest"
+            android:screenOrientation="portrait"/>
+        <activity android:name="com.didi.demo.activity.ClientMemoryActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name="com.didi.demo.activity.ActivityResultActivity"
             android:exported="false" >
@@ -66,6 +73,7 @@
             android:process=":remote" />
         <activity
             android:name="com.didi.demo.remote.RemoteMemoryActivity"
+            android:screenOrientation="portrait"
             android:process=":remote" />
         <service
             android:name="com.didi.demo.remote.RemoteService"

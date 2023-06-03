@@ -13,13 +13,14 @@ import android.os.IBinder
 import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import com.didi.demo.remote.RemoteService
 import com.didi.drouter.annotation.Router
 import com.didi.drouter.api.DRouter
+import com.didi.drouter.api.Strategy
 import com.didi.drouter.demo.R
 import com.didi.drouter.memory.MemoryServer
 import com.didi.drouter.module_base.remote.IRemoteFunction
 import com.didi.drouter.module_base.remote.RemoteFeature
-import com.didi.drouter.api.Strategy
 import com.didi.drouter.utils.RouterExecutor
 import java.nio.ByteBuffer
 
@@ -50,6 +51,10 @@ class ActivityRemoteTest : AppCompatActivity() {
                         .setRemote(Strategy("com.didi.drouter.remote.demo.remote"))
                         .getService()
                         .call()
+            }
+            R.id.start_client_memory -> {
+                startService(Intent(this, RemoteService::class.java))
+                DRouter.build("/activity/client_mem").start(this)
             }
             R.id.start_remote_memory -> {
                 launchMemory()

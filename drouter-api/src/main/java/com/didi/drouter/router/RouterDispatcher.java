@@ -66,9 +66,9 @@ class RouterDispatcher {
         int requestCode = hasRequestCode? request.getInt(Extend.START_ACTIVITY_REQUEST_CODE) : 1024;
         if (request.launcher != null) {
             request.launcher.launch(intent);
-        } else if (context instanceof Activity && callback instanceof RouterCallback.ActivityCallback) {
+        } else if (context instanceof Activity && callback instanceof ActivityCallback) {
             ActivityCompat2.startActivityForResult((Activity) context, intent,
-                    requestCode, (RouterCallback.ActivityCallback) callback);
+                    requestCode, (ActivityCallback) callback);
         } else if (context instanceof Activity && hasRequestCode) {
             ActivityCompat.startActivityForResult((Activity) context, intent,
                     requestCode, intent.getBundleExtra(Extend.START_ACTIVITY_OPTIONS));

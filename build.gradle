@@ -2,21 +2,23 @@
 
 buildscript {
     ext.kotlin_version = '1.6.21'
-    ext.min_support_version = 14
+    ext.min_support_version = 27
 
     // sdk_version(31)需要java11编译
-    ext.compile_sdk_version = 30
-    ext.target_sdk_version = 30
+    ext.compile_sdk_version = 33
+    ext.target_sdk_version = 33
 
     repositories {
         maven { url uri(rootProject.rootDir.path + '/.aar/maven/libs-release')}
         maven { url uri('https://s01.oss.sonatype.org/content/repositories/releases/')}
 
+        maven { url 'https://maven.aliyun.com/repository/public/' }
+        maven { url 'https://maven.aliyun.com/repository/google/' }
         mavenCentral()
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.2.2'
+        classpath 'com.android.tools.build:gradle:7.1.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
         // DRouter Plugin
@@ -29,6 +31,9 @@ allprojects {
     repositories {
         maven { url uri(rootProject.rootDir.path + '/.aar/maven')}
         maven { url uri('https://s01.oss.sonatype.org/content/repositories/releases/')}
+        maven { url 'https://maven.aliyun.com/repository/public/' }
+        maven { url 'https://maven.aliyun.com/repository/google/' }
+        maven { url "https://jitpack.io/" }
         mavenCentral()
         google()
     }

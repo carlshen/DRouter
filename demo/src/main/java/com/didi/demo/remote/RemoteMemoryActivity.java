@@ -149,7 +149,7 @@ public class RemoteMemoryActivity extends AppCompatActivity implements SurfaceHo
 
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
-
+        surfaceReady = false;
     }
 
     @Override

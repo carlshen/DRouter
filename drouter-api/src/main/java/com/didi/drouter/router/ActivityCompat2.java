@@ -31,7 +31,7 @@ public class ActivityCompat2 {
     private static final String CbTag = "router_cb_tag";
 
     private static final AtomicInteger sCount = new AtomicInteger(0);
-    private static final SparseArray<Pair<WeakReference<Activity>, RouterCallback.ActivityCallback>>
+    private static final SparseArray<Pair<WeakReference<Activity>, ActivityCallback>>
             sCallbackMap = new SparseArray<>();
 
     // start index, will not change when rotation or recycle
@@ -44,7 +44,7 @@ public class ActivityCompat2 {
 
     static void startActivityForResult(@NonNull final Activity activity,
                                        @NonNull final Intent intent, final int requestCode,
-                                       RouterCallback.ActivityCallback callback) {
+                                       ActivityCallback callback) {
         final int cur = sCount.incrementAndGet();
         sCallbackMap.put(cur, new Pair<>(new WeakReference<>(activity), callback));
         final Active active;
@@ -68,8 +68,8 @@ public class ActivityCompat2 {
     }
 
     private void onActivityResult(Activity activity, int resultCode, Intent data) {
-        RouterCallback.ActivityCallback cb;
-        Pair<WeakReference<Activity>, RouterCallback.ActivityCallback> pair = sCallbackMap.get(cur);
+        ActivityCallback cb;
+        Pair<WeakReference<Activity>, ActivityCallback> pair = sCallbackMap.get(cur);
         if (pair != null && (cb = pair.second) != null) {
             RouterLogger.getCoreLogger().d("HoldFragment ActivityResult callback success");
             cb.onActivityResult(resultCode, data);

@@ -2,6 +2,7 @@ package com.didi.drouter.utils;
 
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 
 import com.didi.drouter.api.Extend;
 
@@ -90,7 +91,8 @@ public class RouterExecutor {
                 }
             }
             if (t != null) {
-                throw new RuntimeException(t);
+                Log.e("RouterExecutor", "afterExecute: buffer is inaccessible");
+//                throw new RuntimeException(t);
             }
         }
     }

@@ -20,10 +20,10 @@ public interface RouterCallback {
      * @deprecated use
      * {@link Request#setActivityResultLauncher(ActivityResultLauncher)}
      */
-    @Deprecated
-    abstract class ActivityCallback implements RouterCallback {
-        public @Override void onResult(@NonNull Result result) {}
-        public abstract void onActivityResult(int resultCode, @Nullable Intent data);
-    }
+//    @Deprecated
+//    abstract class ActivityCallback implements RouterCallback {
+//        public @Override void onResult(@NonNull Result result) {}
+//        public abstract void onActivityResult(int resultCode, @Nullable Intent data);
+//    }
 
 }
